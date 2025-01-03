@@ -7,7 +7,7 @@ import "./Hero.css"
 
 const Hero = () => {
 
-    const el = useRef(null); // Element to display the typing effect
+    const elem = useRef(null); // Element to display the typing effect
     const typed = useRef(null); // Store the Typed instance
   
     useEffect(() => {
@@ -15,7 +15,7 @@ const Hero = () => {
         strings: [
           "Full Stack Developer",
           "Web Developer",
-          "UI-UX Designer",
+          "Programmer",
           "Backend Developer",
           "Coder",
         ],
@@ -26,7 +26,7 @@ const Hero = () => {
       };
   
       // Initialize Typed.js
-      typed.current = new Typed(el.current, options);
+      typed.current = new Typed(elem.current, options);
 
       return () => {
         // Destroy Typed.js instance during cleanup
