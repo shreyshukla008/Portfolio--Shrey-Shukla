@@ -7,7 +7,7 @@ import "./Hero.css"
 
 const Hero = () => {
 
-    const elem = useRef(null); // Element to display the typing effect
+    const el = useRef(null); // Element to display the typing effect
     const typed = useRef(null); // Store the Typed instance
   
     useEffect(() => {
@@ -26,7 +26,7 @@ const Hero = () => {
       };
   
       // Initialize Typed.js
-      typed.current = new Typed(elem.current, options);
+      typed.current = new Typed(el.current, options);
 
       return () => {
         // Destroy Typed.js instance during cleanup
