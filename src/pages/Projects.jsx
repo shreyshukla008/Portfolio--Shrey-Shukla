@@ -19,7 +19,7 @@ const Projects = () => {
       const result = await resp.json();
       console.log("result: ", result);
       console.log("result[0].data: ", result[0].data);
-      setData(result);
+      setData(result[0].data);
       setLoading(false);
     }catch(error){
       console.log("Error: ", error);
