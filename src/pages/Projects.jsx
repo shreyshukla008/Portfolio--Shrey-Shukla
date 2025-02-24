@@ -17,8 +17,7 @@ const Projects = () => {
       setLoading(true);
       const resp = await fetch(`${baseUrl}/api/v1/projects`);
       const result = await resp.json();
-      console.log("result of project api call: ", result.data);
-      setData(result);
+      setData(result.data);
       setLoading(false);
     }catch(error){
       console.log("Error: ", error);
