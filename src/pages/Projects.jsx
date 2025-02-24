@@ -18,8 +18,7 @@ const Projects = () => {
       const resp = await fetch(`${baseUrl}/api/v1/projects`);
       const result = await resp.json();
       console.log("result: ", result);
-      console.log("result[0].data: ", result[0].data);
-      setData(result[0].data);
+      setData(result);
       setLoading(false);
     }catch(error){
       console.log("Error: ", error);
@@ -59,8 +58,8 @@ const Projects = () => {
                   loading === true ? (<div className='w-full flex justify-center items-center p-8'> <Spinner/> </div>) :
                   (tag !== "all" ?
                     (
-                      projData.filter((project) => project.tags.includes(tag)).
-                      map( (project) => <ProjectCard project={project} setTag={setTag} key={project._id} />)
+                      projData.filter((project) => project.data[0].tags.includes(tag)).
+                      map( (project) => <ProjectCard project={project.data[0]} setTag={setTag} key={project._id} />)
                     ):
                     (
                       projData.map( (project) => <ProjectCard project={project.data[0]} setTag={setTag} key={project._id} />)
