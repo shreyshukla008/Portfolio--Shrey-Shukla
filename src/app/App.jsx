@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
@@ -8,29 +8,41 @@ import Projects from "@/features/projects/Projects";
 import Achievements from "@/features/achievements/Achievements";
 import Skills from "@/features/skills/Skills";
 import ContactMe from "@/features/contact/ContactMe";
+import { SECTION_ID_LIST } from "@/constants/navigation";
+import { useActiveSection } from "@/hooks/useActiveSection";
 
 function App() {
+  const scrollRef = useRef(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen((prev) => !prev);
-  };
+  const activeSection = useActiveSection(SECTION_ID_LIST, scrollRef);
 
   return (
-    <div className="h-screen overflow-x-hidden overflow-y-auto viga-regular">
-      <div className="z-[1000] fixed shadow-md shadow-slate-500">
-        {isSidebarOpen ? (
-          <Sidebar toggleSidebar={toggleSidebar} />
-        ) : (
-          <button
-            type="button"
-            className="icon-arrow-right py-3 text-[#4e45d5] border-y-2 border-r-[1px] border-[#756eda] text-2xl font-extrabold bg-slate-50 rounded-r-md hover:bg-[#756eda] hover:text-white hover:scale-x-125 hover:rounded-r-none duration-300"
-            onClick={toggleSidebar}
-          />
-        )}
-      </div>
+    <div
+      ref={scrollRef}
+      className="h-screen overflow-x-hidden overflow-y-auto viga-regular"
+    >
+      <Sidebar activeSection={activeSection} variant="rail" />
 
-      <div className="flex flex-col mx-auto items-center justify-evenly gap-7 px-2">
+      <button
+        type="button"
+        className={`fixed left-0 top-1/2 z-[1000] -translate-y-1/2 rounded-r-xl border border-[#756eda]/40 border-l-0 bg-[#4e45d5]/50 py-3 pl-1 pr-2 text-xl text-slate-100 shadow-[0_0_20px_rgba(78,69,213,0.45)] backdrop-blur-md transition duration-300 hover:bg-[#665de8]/70 lg:hidden ${
+          isSidebarOpen ? "pointer-events-none opacity-0" : "opacity-100"
+        }`}
+        onClick={() => setIsSidebarOpen(true)}
+        aria-label="Open navigation"
+      >
+        <span className="icon-arrow-right" />
+      </button>
+
+      {isSidebarOpen && (
+        <Sidebar
+          activeSection={activeSection}
+          variant="drawer"
+          onClose={() => setIsSidebarOpen(false)}
+        />
+      )}
+
+      <div className="flex flex-col mx-auto items-center justify-evenly gap-7 px-2 lg:pl-4">
         <Hero />
         <AboutMe />
         <Projects />

@@ -33,7 +33,7 @@ const Hero = () => {
             <h3 className="text-xl font-semibold">Hi! I am</h3>
             <h2 className="text-3xl font-bold -mt-2">Shrey Shukla</h2>
             <p className="text-2xl">
-              Aspiring <br className="sm:hidden" />{" "}
+              <br className="sm:hidden" />{" "}
               <span className=".role font-bold text-[#4e45d5]" ref={el} />
             </p>
             <Socials />

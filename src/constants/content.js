@@ -8,17 +8,16 @@ export const ABOUT_SKILLS_DATA = [
 
 export const HERO_TYPED_STRINGS = [
   "Full Stack Developer",
-  "Web Developer",
   "Programmer",
   "Backend Developer",
-  "Coder",
+  "Software Engineer",
 ];
 
 export const SKILL_FILTERS = [
   { id: "all", label: "All" },
-  { id: "front", label: "Front-End" },
-  { id: "back", label: "Back-End" },
-  { id: "db", label: "DB" },
+  { id: "frontend", label: "Front-End" },
+  { id: "backend", label: "Back-End" },
+  { id: "database", label: "DataBase" },
 ];
 
 export const PROJECT_FILTERS = [

@@ -6,6 +6,7 @@ import { SECTION_IDS } from "@/constants/navigation";
 import { useAsync } from "@/hooks/useAsync";
 import AsyncState from "@/components/ui/AsyncState";
 import SkillCard from "./components/SkillCard";
+import { skillIcons } from "@/assets/skills";
 
 const Skills = () => {
   const [skillType, setSkillType] = useState("all");
@@ -74,9 +75,14 @@ const Skills = () => {
           </div>
 
           <AsyncState loading={loading} error={error}>
-            {filteredStacks.map((stack) => (
-              <SkillCard className="w-[15%]" stack={stack.data} key={stack._id} />
-            ))}
+            {filteredStacks.map((stack) => {
+              if (stack.data.icon && skillIcons[stack.data.icon]) {
+                return (
+                  <SkillCard className="w-[15%]" stack={stack.data} key={stack._id} />
+                );
+              }
+              return null;
+            })}
           </AsyncState>
         </div>
       </div>
