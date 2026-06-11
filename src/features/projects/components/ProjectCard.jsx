@@ -8,6 +8,8 @@ const ProjectCard = ({ project, setTag }) => {
 
   const { achievements, responsibilities, keyFeatures } = project.details;
 
+  // TODO: Add bgUrl to project data
+
   // useEffect(() => {
   //   setBgUrl(project.bgUrl);
   // }, [project.bgUrl]);
