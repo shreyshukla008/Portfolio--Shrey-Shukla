@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import "./ProjectCard.css";
 
+
 const ProjectCard = ({ project, setTag }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [bgUrl, setBgUrl] = useState("");
+  const [bgUrl, setBgUrl] = useState("src/assets/black-1072366_1280.jpg");
 
   const { achievements, responsibilities, keyFeatures } = project.details;
 
-  useEffect(() => {
-    setBgUrl(project.bgUrl);
-  }, [project.bgUrl]);
+  // useEffect(() => {
+  //   setBgUrl(project.bgUrl);
+  // }, [project.bgUrl]);
 
   const handleTag = (newTag) => {
     setTag(newTag);
@@ -17,10 +18,12 @@ const ProjectCard = ({ project, setTag }) => {
 
   return (
     <div
-      className={`relative border-2 bg-cover rounded-lg items-center text-white border-black hover:scale-110 ease-in duration-300 shadow-slate-500 shadow-lg project-card ${
-        isExpanded ? "w-[85%] md:w-[45%]" : "w-[90%]"
-      }`}
-      style={{ backgroundImage: `url(${bgUrl})` }}
+      className={`relative bg-cover rounded-lg items-center text-white border-black hover:scale-110 ease-in duration-300 shadow-slate-500 shadow-lg project-card 
+      w-[85%]
+      `}
+      style={{
+        backgroundImage: `url(${bgUrl})`
+      }}
     >
       <div className="flex flex-col gap-4 p-4 w-[80%] z-40">
         <h4 className="text-3xl font-bold">{project.title}</h4>
