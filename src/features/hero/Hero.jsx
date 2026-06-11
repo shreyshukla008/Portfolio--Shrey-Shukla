@@ -10,6 +10,7 @@ const Hero = () => {
   const el = useRef(null);
   const typed = useRef(null);
 
+  // Initialize Typed.js for hero text animation
   useEffect(() => {
     typed.current = new Typed(el.current, {
       strings: HERO_TYPED_STRINGS,
